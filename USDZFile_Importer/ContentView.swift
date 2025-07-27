@@ -24,7 +24,9 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            VStack(spacing: 30) {
+            HStack {
+                Spacer()
+                VStack(spacing: 30) {
                 if let fileURL = selectedFileURL {
                     // Display the 3D model
                     Model3D(url: fileURL) { model in
@@ -94,7 +96,10 @@ struct ContentView: View {
                         .controlSize(.large)
                     }
                 }
+                }
+                Spacer()
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
             .padding(40)
             .navigationTitle("USDZ Viewer")
         }
@@ -141,19 +146,8 @@ struct ImmersiveView: View {
                         modelEntity.position = [0, 0, -2] // Position in front of user
                         modelEntity.scale = [0.5, 0.5, 0.5] // Scale down if needed
                         
-                        // Add rotation animation for visionOS 2
-                        let rotationAnimation = FromToByAnimation<Transform>(
-                            name: "rotation",
-                            from: .init(scale: modelEntity.scale, rotation: modelEntity.orientation),
-                            to: .init(scale: modelEntity.scale, rotation: simd_quatf(angle: .pi * 2, axis: [0, 1, 0])),
-                            duration: 10,
-                            timing: .linear,
-                        //    repeatMode: .repeating
-                        )
-                        
-                        if let animationResource = try? AnimationResource.generate(with: rotationAnimation) {
-                            modelEntity.playAnimation(animationResource)
-                        }
+                        // Position and scale the model in immersive space
+                        // Animation can be added later if needed
                         
                         anchor.addChild(modelEntity)
                     } catch {
