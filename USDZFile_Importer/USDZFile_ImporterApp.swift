@@ -5,7 +5,7 @@
 //  Created by Alexander Blong on 27/07/2025.
 //
 
-import SwiftUI
+/*import SwiftUI
 
 @main
 struct USDZFile_ImporterApp: App {
@@ -31,3 +31,5 @@ struct USDZFile_ImporterApp: App {
         .immersionStyle(selection: .constant(.mixed), in: .mixed)
      }
 }
+*/
+

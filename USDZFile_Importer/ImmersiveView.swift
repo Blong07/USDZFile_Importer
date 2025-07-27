@@ -4,7 +4,7 @@
 //
 //  Created by Alexander Blong on 27/07/2025.
 //
-
+/*
 import SwiftUI
 import RealityKit
 import RealityKitContent
@@ -28,3 +28,4 @@ struct ImmersiveView: View {
     ImmersiveView()
         .environment(AppModel())
 }
+*/
